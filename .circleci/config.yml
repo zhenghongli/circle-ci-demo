@@ -26,11 +26,11 @@ jobs:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
-          image: circle-gke
-          tag: "v3" #Change version number e.g to 'v3' when updating application
+          image: circleci-gke
+          tag: "v2" #Change version number e.g to 'v3' when updating application
       - gcr/push-image:
-          image: circle-gke
-          tag: "v3" #Change version number e.g to 'v3' when updating application
+          image: circleci-gke
+          tag: "v2" #Change version number e.g to 'v3' when updating application
     
   deploy:
     description: Deploy application to Google Kubernetes Engine
@@ -44,7 +44,7 @@ jobs:
       - gcp-gke/rollout-image:
           deployment: circle-ci-cluster
           container: dominic-backend
-          image: gcr.io/vocal-antler-261406/circleci-gke:v3 # change version when updating
+          image: gcr.io/vocal-antler-261406/circleci-gke:v2 # change version when updating
 workflows:
   build_update_deploy:
     jobs:
